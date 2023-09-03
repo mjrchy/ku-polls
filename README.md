@@ -1,6 +1,6 @@
 # KU Polls
 
-This app helps create surveys with multiple-choice questions specifically for Kasetsart University. It's made by following the [Django tutorial project][django-tutorial] and includes extra features. 
+This app helps create surveys with multiple-choice questions specifically for Kasetsart University. It's made by following the [Django Tutorial project][django-tutorial] and includes extra features. 
 
 A polls application for [Individual Software Process](https://cpske.github.io/ISP) course at [Kasetsart University](https://ku.ac.th).
 
