@@ -19,7 +19,7 @@ class IndexView(generic.ListView):
         question_list = [
             question for question in Question.objects.all()
             if question.is_published() and question.can_vote()]
-        return question_list
+        return sorted(question_list, key=lambda x: x.pub_date, reverse=True)
 
 
 class DetailView(generic.DetailView):
