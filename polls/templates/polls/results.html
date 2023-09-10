@@ -1,4 +1,4 @@
-{% load static %}
+<!-- {% load static %}
 
 <link rel="stylesheet" href="{% static 'polls/style.css' %}">
 <h1>KU Polls</h1>
@@ -9,4 +9,30 @@
     <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
 {% endfor %}
 </ul>
+
+<a href="{% url 'polls:index'%}">Back to List of Polls</a> -->
+
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'polls/results_style.css' %}">
+<h1>KU Polls</h1>
+<h2>{{ question.question_text }}</h2>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>Choice</th>
+            <th>Votes</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for choice in question.choice_set.all %}
+        <tr>
+            <td>{{ choice.choice_text }}</td>
+            <td>{{ choice.votes }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
 <a href="{% url 'polls:index'%}">Back to List of Polls</a>
