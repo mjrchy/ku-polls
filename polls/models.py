@@ -12,18 +12,17 @@ class Question(models.Model):
         return self.question_text
     
     def was_published_recently(self):
-        now = timezone.now()
+        now = timezone.localtime(timezone.now())
         return now - datetime.timedelta(days=1) <= self.pub_date <= now
     
     def is_published(self):
-        return timezone.now() >= self.pub_date
+        return  self.pub_date <= timezone.localtime(timezone.now())
     
     def can_vote(self):
-        if self.end_date is None and timezone.now() >= self.pub_date:
+        now = timezone.localtime(timezone.now())
+        if self.end_date is None and now >= self.pub_date:
             return True
-        elif self.pub_date < timezone.now() and timezone.now() < self.end_date:
-            return True
-        return False
+        return self.pub_date <= now and now < self.end_date
 
 class Choice(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
