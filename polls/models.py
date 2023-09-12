@@ -2,6 +2,7 @@
 import datetime
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth.models import User
 
 
 class Question(models.Model):
@@ -22,7 +23,7 @@ class Question(models.Model):
         :return: question_text
         """
         return self.question_text
-    
+
     def was_published_recently(self):
         """Checks if the question was published recently in 1 day.
 
@@ -59,8 +60,19 @@ class Choice(models.Model):
     """
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     choice_text = models.CharField(max_length=200)
-    votes = models.IntegerField(default=0)
+
+    @property
+    def votes(self):
+        return self.vote_set.count()
 
     def __str__(self):
         """Returns a string representation of the choice text."""
         return self.choice_text
+
+class Vote(models.Model):
+    """Records a Vote of a Choice by a User"""
+    choice = models.ForeignKey(Choice, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return str(self.user) + " voted for " + str(self.choice)
