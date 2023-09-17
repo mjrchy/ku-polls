@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+</head>
+<body>
+    <h2 style="color: #007bff; text-align: center; font-size: 24px; margin-bottom: 20px;">Sign up</h2>
+    <form method="POST" style="background-color: #fff; border: 1px solid #ddd; border-radius: 5px; padding: 20px; max-width: 400px; margin: 0 auto;">
+        {% csrf_token %}
+        <table style="width: 100%;">
+            {{ form.as_table }}
+            <tr>
+                <td colspan="2">
+                    <button type="submit" style="background-color: #007bff; color: #fff; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Sign up</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
