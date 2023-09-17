@@ -1,4 +1,5 @@
 # KU Polls
+[![Python application](https://github.com/mjrchy/ku-polls/actions/workflows/python-app.yml/badge.svg)](https://github.com/mjrchy/ku-polls/actions/workflows/python-app.yml)
 
 This app helps create surveys with multiple-choice questions specifically for Kasetsart University. It's made by following the [Django Tutorial project](https://docs.djangoproject.com/en/3.1/intro/tutorial01/) and includes extra features. 
 
