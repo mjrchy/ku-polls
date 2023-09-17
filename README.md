@@ -7,12 +7,27 @@ A polls application for [Individual Software Process](https://cpske.github.io/IS
 
 ## Install and Configure the Application
 
+1. Cloning the repository
+   '''
 git clone https://github.com/mjrchy/ku-polls.git
+   '''
+2. Access to the project directory
+'''
 cd ku-polls
-python manage.py migrate
+'''
+3. Create a Virtual Environment
+'''python -m venv venv'''
+4. Set Up the Database
+'''python manage.py migrate'''
+5. Download data
+   '''
 python manage.py loaddata data/users.json
 python manage.py loaddata data/polls.json
+'''
+6. Run the server
+'''
 python manage.py runserver
+'''
 
 ## Project Documents
 
