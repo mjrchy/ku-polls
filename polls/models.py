@@ -14,7 +14,7 @@ class Question(models.Model):
         end_date (datetime.datetime, optional): end date and end time.
     """
     question_text = models.CharField(max_length=200)
-    pub_date = models.DateTimeField('date published', default=timezone.now())
+    pub_date = models.DateTimeField('date published', default=timezone.now)
     end_date = models.DateTimeField('end date', null=True, blank=True)
 
     def __str__(self):
