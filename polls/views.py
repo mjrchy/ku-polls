@@ -69,6 +69,6 @@ def vote(request, question_id):
         # no matching vote - create new vote
         vote = Vote(user=this_user, choice=selected_choice)
     vote.save()
-    messages.success(request, "The voting was successful")
+    messages.success(request, "Your vote for " + question.question_text + "has been saved.")
     return HttpResponseRedirect(
         reverse('polls:results', args=(question.id,)))
