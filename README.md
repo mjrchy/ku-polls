@@ -16,3 +16,9 @@ All project-related documents are in the [Project Wiki](../../wiki/Home)
 - [Requirements](../../wiki/Requirements)
 - [Development Plan](../../wiki/Development%20Plan)
 - [Iteration 1 Plan](../../wiki/Iteration%201%20Plan) and [Project Board](../../projects/1)
+
+  ## Demo Users
+| Username  | Password        |
+|-----------|-----------------|
+|   user1   | 123456 |
+|   user2   | 123456 |
