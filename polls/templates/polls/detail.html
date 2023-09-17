@@ -1,22 +1,184 @@
 {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KU Polls - {{ question.question_text }}</title>
+    <style>
+        /* Reset default margin and padding */
+        * {
+            margin: 0;
+            padding: 0;
+        }
 
-<link rel="stylesheet" href="{% static 'polls/detail_style.css' %}">
-<a href="{% url 'login'%}">Log in</a>
-<a href="{% url 'logout'%}">Log out</a>
-<h1>KU Polls</h1>
-<form action="{% url 'polls:vote' question.id %}" method="post">
-    {% csrf_token %}
-    <fieldset>
-        <legend><h3>{{ question.question_text }}</h3></legend>
-        {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-        {% for choice in question.choice_set.all %}
-        <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
-        <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
-        {% endfor %}
-    </fieldset>
-    <input type="submit" value="Vote">
-    <li>
-        <a href="{% url 'polls:index'%}">Back to List of Polls</a>
-        <a href="{% url 'polls:results' question.id%}">Results</a>
-    </li>
-</form>
+        /* Style the body */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        /* Header Styles */
+        .header {
+            color: black; /* Pastel Green Color */
+            font-size: 40px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            margin-right: 20px;
+        }
+
+        .navbar {
+            background-color: #80c67d; 
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: black;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: bold;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #f8f8f8;
+        }
+
+        .user-greeting {
+            color: black;
+            font-weight: bold;
+            font-size: 18px;
+            padding-right: 20px;
+        }
+
+        /* Style the container */
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* Style the question container */
+        .question-container {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 15px;
+            padding: 20px;
+            max-width: 600px;
+            width: 100%;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .question-header {
+            color: darkgreen;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        /* Style the question form */
+        .question-form {
+            display: block;
+            text-align: center;
+        }
+
+        .choice-label {
+            display: block;
+            font-size: 18px;
+            margin-bottom: 5px;
+            margin-left: 5%;
+        }
+
+        /* Style the vote button */
+        .vote-button {
+            background-color: #ACDF87;
+            color: darkgreen;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .vote-button:hover {
+            background-color: #67a365;
+        }
+
+        /* Style the result link */
+        .result-link {
+            text-align: center;
+        }
+
+        .button {
+            background-color: #ACDF87;
+            color: darkgreen;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 18px;
+            text-decoration: none;
+        }
+
+        .button:hover {
+            background-color: #67a365;
+        }
+
+        .choice-label {
+            text-align: left;
+            padding: 1%;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-left">
+            {% if user.is_authenticated %}
+            <p class="user-greeting">{{user.username.title}}</p>
+            {%else%}
+            <a href="{% url 'login' %}" class="nav-link">Log in</a>
+            {%endif%}
+            <a href="{% url 'logout' %}" class="nav-link">Log out</a>
+        </div>
+        <div class="nav-right">
+            <h1 class="header">KU Polls</h1>
+        </div>
+    </nav>
+    <main class="container">
+        <div class="question-container">
+            <form action="{% url 'polls:vote' question.id %}" method="post" class="question-form">
+                {% csrf_token %}
+                    <h2 class="question-header">{{ question.question_text }}</h2>
+                    {% if error_message %}
+                    <p class="error">{{ error_message }}</p>
+                    {% endif %}
+                    {% for choice in question.choice_set.all %}
+                    <label class="choice-label">
+                        <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
+                        {{ choice.choice_text }}
+                    </label>
+                    {% endfor %}
+                <button type="submit" class="vote-button">Vote</button>
+            </form>
+        </div>
+        <div class="result-link">
+            <a href="{% url 'polls:index' %}" class="button">Back</a>
+            <a href="{% url 'polls:results' question.id %}" class="button">See Results</a>
+        </div>
+    </main>
+</body>
+</html>
