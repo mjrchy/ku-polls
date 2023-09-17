@@ -4,8 +4,8 @@
   "pk": 3,
   "fields": {
     "question_text": "Which programming language would you like to learn?",
-    "pub_date": "2023-09-02T04:19:25.894Z",
-    "end_date": "2023-09-11T16:49:56Z"
+    "pub_date": "2023-09-02T04:19:25Z",
+    "end_date": null
   }
 },
 {
@@ -32,7 +32,25 @@
   "fields": {
     "question_text": "What's the biggest challenge you face as a beginner programmer?",
     "pub_date": "2023-09-02T04:35:39Z",
-    "end_date": "2023-09-27T08:07:42Z"
+    "end_date": null
+  }
+},
+{
+  "model": "polls.question",
+  "pk": 7,
+  "fields": {
+    "question_text": "How did you first become interested in programming?",
+    "pub_date": "2023-09-17T12:31:14Z",
+    "end_date": null
+  }
+},
+{
+  "model": "polls.question",
+  "pk": 8,
+  "fields": {
+    "question_text": "What programming skill would you like to improve the most as a beginner?",
+    "pub_date": "2023-09-17T12:32:52Z",
+    "end_date": null
   }
 },
 {
@@ -164,6 +182,70 @@
   }
 },
 {
+  "model": "polls.choice",
+  "pk": 18,
+  "fields": {
+    "question": 7,
+    "choice_text": "School or formal education"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 19,
+  "fields": {
+    "question": 7,
+    "choice_text": "Self-study and online resources"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 20,
+  "fields": {
+    "question": 7,
+    "choice_text": "Friends influence"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 21,
+  "fields": {
+    "question": 7,
+    "choice_text": "Family influence"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 22,
+  "fields": {
+    "question": 8,
+    "choice_text": "Problem-solving abilities"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 23,
+  "fields": {
+    "question": 8,
+    "choice_text": "Coding speed"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 24,
+  "fields": {
+    "question": 8,
+    "choice_text": "Debugging skills"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 25,
+  "fields": {
+    "question": 8,
+    "choice_text": "Algorithmic thinking"
+  }
+},
+{
   "model": "polls.vote",
   "pk": 1,
   "fields": {
@@ -175,7 +257,23 @@
   "model": "polls.vote",
   "pk": 2,
   "fields": {
-    "choice": 14,
+    "choice": 16,
+    "user": 1
+  }
+},
+{
+  "model": "polls.vote",
+  "pk": 3,
+  "fields": {
+    "choice": 24,
+    "user": 1
+  }
+},
+{
+  "model": "polls.vote",
+  "pk": 4,
+  "fields": {
+    "choice": 19,
     "user": 1
   }
 }
