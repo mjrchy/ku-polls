@@ -7,7 +7,12 @@ A polls application for [Individual Software Process](https://cpske.github.io/IS
 
 ## Install and Configure the Application
 
-To be added.
+git clone https://github.com/mjrchy/ku-polls.git
+cd ku-polls
+python manage.py migrate
+python manage.py loaddata data/users.json
+python manage.py loaddata data/polls.json
+python manage.py runserver
 
 ## Project Documents
 
