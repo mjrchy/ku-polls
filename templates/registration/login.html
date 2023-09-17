@@ -1,14 +1,61 @@
+<!DOCTYPE html>
 <html>
+<head>
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h2 {
+            color: #007bff;
+        }
+
+        form {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        p {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        input[type="hidden"] {
+            display: none;
+        }
+    </style>
+</head>
 <body>
-<h2>Login</h2>
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <p>
-  <button type="submit">Login</button>
-  </p>
-  <input type="hidden" name="next" value="{{next}}"/>
- </form>
- {# If you have a sign-up page, then add a link here #}
+    <h2>Login</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <p>
+            <button type="submit">Login</button>
+        </p>
+        <input type="hidden" name="next" value="{{next}}"/>
+    </form>
+    <a href="{% url 'signup'%}">Sign up</a>
 </body>
 </html>
