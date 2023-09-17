@@ -1,6 +1,7 @@
 {% load static %}
 
 <link rel="stylesheet" href="{% static 'polls/index_style.css' %}">
+<a href="{% url 'login'%}">Log in</a>
 <a href="{% url 'logout'%}">Log out</a>
 <h1>KU Polls</h1>
 {% if user.is_authenticated %}
