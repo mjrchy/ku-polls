@@ -1,0 +1,92 @@
+[
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$390000$r26A8U6euFJB6dwmMmxxLg$eA2HMRVuWjzGzE+w0cr3arEjtf5J4xEDO0NiGxCUYOw=",
+    "last_login": "2023-09-17T09:42:47.128Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "admin@example.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2023-08-31T17:28:59.929Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$390000$2EoEHpdgeHrIJQhPKfTy3h$X8i8kDvkXZknna/iKsGPp/RkNeglBDEl/tpDn1cOVOU=",
+    "last_login": "2023-09-12T07:43:28.853Z",
+    "is_superuser": false,
+    "username": "mjrchy",
+    "first_name": "mjrchy",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2023-09-12T07:41:32.123Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$390000$a6xeJvpOXGC1OSuCP0yFz4$qJGQ/+TvPtvvqThcfRZWWLLW3upuyiK9JEl/cg5vfs8=",
+    "last_login": "2023-09-16T04:35:41.003Z",
+    "is_superuser": false,
+    "username": "user1",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2023-09-16T04:32:51.245Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 4,
+  "fields": {
+    "password": "pbkdf2_sha256$390000$0FRG01V6pE5UdWERKo9Ms4$QXi3KTzSnkJ4MSneqqr8gI9eMfmfw0h+KyyBfm+a7d8=",
+    "last_login": "2023-09-16T04:35:50.852Z",
+    "is_superuser": false,
+    "username": "user2",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2023-09-16T04:33:53.091Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 5,
+  "fields": {
+    "password": "pbkdf2_sha256$390000$OKkp4lhDCivXo6AXyJhGtu$Owe5pyoamYBMmEPNIs+ksJfxKRKZ6zhOAo3iq203N9k=",
+    "last_login": "2023-09-17T09:44:13.859Z",
+    "is_superuser": false,
+    "username": "mjrchyyy",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2023-09-17T09:44:13.401Z",
+    "groups": [],
+    "user_permissions": []
+  }
+}
+]
