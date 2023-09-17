@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+
+        h2 {
+            color: darkgreen;
+            font-size: 24px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        /* Header Styles */
+        .header {
+            color: black; /* Pastel Green Color */
+            font-size: 40px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            margin-right: 20px;
+            font-weight: bold;
+        }
+
+        .navbar {
+            height: 73px;
+            background-color: #80c67d; 
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+            padding-right: 20px;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: black;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: bold;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #f8f8f8;
+        }
+
+        button {
+            background-color: #ACDF87;
+            color: darkgreen;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 18px;
+            margin: 2%;
+        }
+
+        button:hover {
+            background-color: #67a365;
+        }
+
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-left">
+            <a href="{% url 'login'%}" class="nav-link">Log in</a>
+        </div>
+        <div class="nav-right">
+            <h1 class="header">KU Polls</h1>
+        </div>
+    </nav>
+    <h2>Sign up</h2>
+    <form method="POST" style="background-color: #fff; border: 1px solid #ddd; border-radius: 5px; padding: 20px; max-width: 400px; margin: 0 auto;">
+        {% csrf_token %}
+        <table style="width: 100%;">
+            {{ form.as_table }}
+            <tr>
+                <td colspan="2">
+                    <button>Sign up</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

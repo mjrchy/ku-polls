@@ -1,15 +1,153 @@
 {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KU Polls</title>
+    <style>
+        /* Reset default margin and padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<link rel="stylesheet" href="{% static 'polls/index_style.css' %}">
-<h1>KU Polls</h1>
-{% if latest_question_list %}
-    <ul>
-    {% for question in latest_question_list %}
-        <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a>
-            <a class="result" href="{% url 'polls:results' question.id%}">Results</a>
-        </li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No polls are available.</p>
-{% endif %}
+        /* Global Styles */
+        body {
+            font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background-color: #80c67d; 
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: black;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: bold;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #f8f8f8;
+        }
+
+        /* Header Styles */
+        .header {
+            color: black; /* Pastel Green Color */
+            font-size: 40px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            margin-right: 20px;
+        }
+
+        /* Poll List Styles */
+        .poll-list {
+            list-style-type: none;
+            margin-top: 30px;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .poll-item {
+            margin: 10px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease-in-out;
+            max-width: 350px;
+            width: 100%;
+            position: relative; /* Added */
+        }
+
+        .poll-item:hover {
+            transform: scale(1.05);
+        }
+
+        .question {
+            margin-bottom: 10px;
+        }
+
+        .question a {
+            text-decoration: none;
+            color: #333;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .result {
+            background-color: #ACDF87; 
+            border-radius: 5px;
+            text-decoration: none;
+            color: white;
+            padding: 10px 15px;
+            display: inline-block;
+            font-weight: bold;
+        }
+
+        .result:hover {
+            background-color:#67a365; 
+        }
+
+        .user-greeting {
+            color: black;
+            font-weight: bold;
+            font-size: 18px;
+            padding-right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-left">
+            {% if user.is_authenticated %}
+            <p class="user-greeting">Welcome, {{ user.username.title }}</p>
+            {% else %}
+            <a href="{% url 'login' %}" class="nav-link">Log in</a>
+            {% endif %}
+            <a href="{% url 'logout' %}" class="nav-link">Log out</a>
+        </div>
+        <div class="nav-right">
+            <h1 class="header">KU Polls</h1>
+        </div>
+    </nav>
+    <main>
+        {% if latest_question_list %}
+        <ul class="poll-list">
+            {% for question in latest_question_list %}
+            <li class="poll-item">
+                <div class="question">
+                    <a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a>
+                </div>
+                <div class="result">
+                    <a href="{% url 'polls:results' question.id %}">Results</a>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p>No polls are available.</p>
+        {% endif %}
+    </main>
+</body>
+</html>

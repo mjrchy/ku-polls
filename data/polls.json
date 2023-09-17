@@ -1,0 +1,280 @@
+[
+{
+  "model": "polls.question",
+  "pk": 3,
+  "fields": {
+    "question_text": "Which programming language would you like to learn?",
+    "pub_date": "2023-09-02T04:19:25Z",
+    "end_date": null
+  }
+},
+{
+  "model": "polls.question",
+  "pk": 4,
+  "fields": {
+    "question_text": "What kind of projects are you most interested in programming for?",
+    "pub_date": "2023-09-02T04:34:03Z",
+    "end_date": null
+  }
+},
+{
+  "model": "polls.question",
+  "pk": 5,
+  "fields": {
+    "question_text": "What's your preferred learning style for programming?",
+    "pub_date": "2023-09-02T04:34:23Z",
+    "end_date": null
+  }
+},
+{
+  "model": "polls.question",
+  "pk": 6,
+  "fields": {
+    "question_text": "What's the biggest challenge you face as a beginner programmer?",
+    "pub_date": "2023-09-02T04:35:39Z",
+    "end_date": null
+  }
+},
+{
+  "model": "polls.question",
+  "pk": 7,
+  "fields": {
+    "question_text": "How did you first become interested in programming?",
+    "pub_date": "2023-09-17T12:31:14Z",
+    "end_date": null
+  }
+},
+{
+  "model": "polls.question",
+  "pk": 8,
+  "fields": {
+    "question_text": "What programming skill would you like to improve the most as a beginner?",
+    "pub_date": "2023-09-17T12:32:52Z",
+    "end_date": null
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 2,
+  "fields": {
+    "question": 3,
+    "choice_text": "Python"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 3,
+  "fields": {
+    "question": 3,
+    "choice_text": "Java"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 4,
+  "fields": {
+    "question": 3,
+    "choice_text": "C"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 5,
+  "fields": {
+    "question": 3,
+    "choice_text": "HTML"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 6,
+  "fields": {
+    "question": 4,
+    "choice_text": "Web Development"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 7,
+  "fields": {
+    "question": 4,
+    "choice_text": "Game Development"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 8,
+  "fields": {
+    "question": 4,
+    "choice_text": "Data Analysis"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 9,
+  "fields": {
+    "question": 4,
+    "choice_text": "Mobile App Development"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 10,
+  "fields": {
+    "question": 5,
+    "choice_text": "Online Courses and Tutorials"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 11,
+  "fields": {
+    "question": 5,
+    "choice_text": "Books and Documentation"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 12,
+  "fields": {
+    "question": 5,
+    "choice_text": "Interactive Coding Bootcamps"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 13,
+  "fields": {
+    "question": 5,
+    "choice_text": "Learning from a Mentor"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 14,
+  "fields": {
+    "question": 6,
+    "choice_text": "Debugging and Problem-Solving"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 15,
+  "fields": {
+    "question": 6,
+    "choice_text": "Understanding Algorithms and Data Structures"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 16,
+  "fields": {
+    "question": 6,
+    "choice_text": "Finding Time to Practice"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 17,
+  "fields": {
+    "question": 6,
+    "choice_text": "Staying Motivated and Avoiding Burnout"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 18,
+  "fields": {
+    "question": 7,
+    "choice_text": "School or formal education"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 19,
+  "fields": {
+    "question": 7,
+    "choice_text": "Self-study and online resources"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 20,
+  "fields": {
+    "question": 7,
+    "choice_text": "Friends influence"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 21,
+  "fields": {
+    "question": 7,
+    "choice_text": "Family influence"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 22,
+  "fields": {
+    "question": 8,
+    "choice_text": "Problem-solving abilities"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 23,
+  "fields": {
+    "question": 8,
+    "choice_text": "Coding speed"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 24,
+  "fields": {
+    "question": 8,
+    "choice_text": "Debugging skills"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 25,
+  "fields": {
+    "question": 8,
+    "choice_text": "Algorithmic thinking"
+  }
+},
+{
+  "model": "polls.vote",
+  "pk": 1,
+  "fields": {
+    "choice": 10,
+    "user": 1
+  }
+},
+{
+  "model": "polls.vote",
+  "pk": 2,
+  "fields": {
+    "choice": 16,
+    "user": 1
+  }
+},
+{
+  "model": "polls.vote",
+  "pk": 3,
+  "fields": {
+    "choice": 24,
+    "user": 1
+  }
+},
+{
+  "model": "polls.vote",
+  "pk": 4,
+  "fields": {
+    "choice": 19,
+    "user": 1
+  }
+}
+]
