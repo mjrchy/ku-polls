@@ -23,9 +23,8 @@
             margin-bottom: 20px;
         }
 
-        /* Header Styles */
         .header {
-            color: black; /* Pastel Green Color */
+            color: black; 
             font-size: 40px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
             margin-right: 20px;
@@ -77,6 +76,43 @@
             background-color: #67a365;
         }
 
+        form {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 15px;
+            padding: 20px;
+            max-width: 400px;
+            margin: 0 auto;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .input-label {
+            margin: 2%;
+            color: black;
+            font-size: 17px;
+            text-align: left;
+        }
+        .input-field{
+            flex-grow: 1;
+            margin-right: 1rem;
+        }
+        .input-field input{
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+
+        .flex {
+            display: flex;
+            margin: 16px 14px;
+        }
+
+        .error li {
+            list-style-type: none;
+            color: rgb(232, 82, 82);
+        }
+
     </style>
 </head>
 <body>
@@ -89,10 +125,22 @@
         </div>
     </nav>
     <h2>Sign up</h2>
-    <form method="POST" style="background-color: #fff; border: 1px solid #ddd; border-radius: 5px; padding: 20px; max-width: 400px; margin: 0 auto;">
+    <form method="POST">
         {% csrf_token %}
         <table style="width: 100%;">
-            {{ form.as_table }}
+            <div class="flex">
+                <p class="input-label" >Username</p>
+                <div class="input-field">{{form.username}}</div>
+            </div>
+            <div class="flex">
+                <p class="input-label" >Password</p>
+                <div class="input-field">{{form.password1}}</div>
+            </div>
+            <div class="flex">
+                <p class="input-label" >Confirmed Password</p>
+                <div class="input-field">{{form.password2}}</div>
+            </div>
+            <div class="error">{{form.errors}}</div>
             <tr>
                 <td colspan="2">
                     <button>Sign up</button>
