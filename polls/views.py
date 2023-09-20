@@ -31,7 +31,7 @@ class DetailView(generic.DetailView):
         """Excludes any questions that aren't published yet."""
         return Question.objects.filter(
             pub_date__lte=timezone.now(), end_date__gte=timezone.now())
-    
+
     def get(self, request, pk):
         """GET requests for the detail view of a question."""
         selected_question = get_object_or_404(Question, pk=pk)
@@ -69,6 +69,7 @@ def vote(request, question_id):
         # no matching vote - create new vote
         vote = Vote(user=this_user, choice=selected_choice)
     vote.save()
-    messages.success(request, "Your vote for " + question.question_text + "has been saved.")
+    messages.success(request, "Your vote for " + question.question_text
+                     + "has been saved.")
     return HttpResponseRedirect(
         reverse('polls:results', args=(question.id,)))

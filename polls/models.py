@@ -31,14 +31,14 @@ class Question(models.Model):
         """
         now = timezone.localtime(timezone.now())
         return now - datetime.timedelta(days=1) <= self.pub_date <= now
-    
+
     def is_published(self):
         """Checks if the current date is on or after publication date.
 
         return: bool: True if the question is published, False otherwise.
         """
         return self.pub_date <= timezone.localtime(timezone.now())
-        
+
     def can_vote(self):
         """Checks if voting is allowed for this question.
 
@@ -63,16 +63,19 @@ class Choice(models.Model):
 
     @property
     def votes(self):
+        """Compute the number of votes received for this choice."""
         return self.vote_set.count()
 
     def __str__(self):
         """Returns a string representation of the choice text."""
         return self.choice_text
 
+
 class Vote(models.Model):
-    """Records a Vote of a Choice by a User"""
+    """Records a Vote of a Choice by a User."""
     choice = models.ForeignKey(Choice, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
+        """A string representing the user's vote for a choice."""
         return str(self.user) + " voted for " + str(self.choice)
