@@ -21,6 +21,8 @@
             font-size: 40px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
             margin-right: 20px;
+            text-decoration: none;
+            font-weight: bold;
         }
 
         .navbar {
@@ -56,6 +58,7 @@
             font-weight: bold;
             font-size: 18px;
             padding-right: 20px;
+            text-decoration: none;
         }
 
         .container {
@@ -147,14 +150,14 @@
     <nav class="navbar">
         <div class="nav-left">
             {% if user.is_authenticated %}
-            <p class="user-greeting">{{user.username.title}}</p>
+            <a href="{% url 'polls:index'%}" class="user-greeting">{{user.username.title}}</a>
             {%else%}
             <a href="{% url 'login' %}" class="nav-link">Log in</a>
             {%endif%}
             <a href="{% url 'logout' %}" class="nav-link">Log out</a>
         </div>
         <div class="nav-right">
-            <h1 class="header">KU Polls</h1>
+            <a href="{% url 'polls:index'%}" class="header">KU Polls</a>
         </div>
     </nav>
     <main class="container">

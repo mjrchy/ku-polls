@@ -36,9 +36,8 @@ class DetailView(generic.DetailView):
         """GET requests for the detail view of a question."""
         selected_question = get_object_or_404(Question, pk=pk)
         try:
-            choice_id = Vote.objects.get(user=request.user,
-                                         choice__question=selected_question).choice.id
-        except Vote.DoesNotExist:
+            choice_id = Vote.objects.get(user=request.user, choice__question=selected_question).choice.id
+        except (Vote.DoesNotExist, TypeError):
             choice_id = None
         if not selected_question.can_vote():
             messages.error(request, 'Voting is not allowed.')

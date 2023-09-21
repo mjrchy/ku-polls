@@ -18,6 +18,8 @@
                 font-size: 40px;
                 text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
                 margin-right: 20px;
+                text-decoration: none;
+                font-weight: bold;
             }
 
             .navbar {
@@ -49,9 +51,26 @@
             }
 
             h2 {
-                color: darkgreen;
+                color: black;
                 font-size: 24px;
                 margin-top: 20px;
+            }
+
+            .container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 20px;
+            }
+
+            .question-container {
+                background-color: white;
+                border: 1px solid #ddd;
+                border-radius: 15px;
+                padding: 20px;
+                max-width: 600px;
+                width: 100%;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
             }
 
             table {
@@ -92,7 +111,6 @@
                 font-weight: bold;
                 font-size: 18px;
                 text-decoration: none;
-                margin: 20px auto;
                 max-width: 200px;
                 text-align: center;
             }
@@ -106,6 +124,35 @@
                 font-weight: bold;
                 font-size: 18px;
                 padding-right: 20px;
+                text-decoration: none;
+            }
+
+            .result-link {
+                text-align: center;
+                display: flex;
+                justify-content: center;
+                gap: 1%;
+            }
+
+            .button {
+                background-color: #ACDF87;
+                color: darkgreen;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                font-weight: bold;
+                font-size: 18px;
+                text-decoration: none;
+            }
+
+            .button:hover {
+                background-color: #67a365;
+            }
+
+            .msg {
+                color: darkgreen;
+                margin-top: 2%;
             }
 
         </style>
@@ -114,19 +161,21 @@
         <nav class="navbar">
             <div class="nav-left">
                 {% if user.is_authenticated %}
-                <p class="user-greeting">{{user.username.title}}</p>
+                
+                <a href="{% url 'polls:index'%}" class="user-greeting">{{user.username.title}}</a>
                 {%else%}
                 <a href="{% url 'login' %}" class="nav-link">Log in</a>
                 {%endif%}
                 <a href="{% url 'logout' %}" class="nav-link">Log out</a>
             </div>
             <div class="nav-right">
-                <h1 class="header">KU Polls</h1>
+                <a href="{% url 'polls:index'%}" class="header">KU Polls</a>
             </div>
         </nav>
+        <main class="container">
+            <div class="question-container">
                 <table border="1">
                     <h2>{{ question.question_text }}</h2>
-                    
                     {% if messages %}
                     {% for message in messages %}
                     <p class="msg">{{message}}</p>
@@ -147,6 +196,11 @@
                         {% endfor %}
                     </tbody>
                 </table>
-                <a href="{% url 'polls:index' %}" class="button">Back to List of Polls</a>
+            </div>
+        </main>
+        <div class="result-link">
+            <a href="{% url 'polls:detail' question.id %}" class="button">Back</a>
+            <a href="{% url 'polls:index' %}" class="button">Vote More</a>
+        </div>
     </body>
 </html>
