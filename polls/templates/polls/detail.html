@@ -136,6 +136,11 @@
             text-align: left;
             padding: 1%;
         }
+
+        .error {
+            color: rgb(232, 82, 82);
+            margin-top: 2%;
+        }
     </style>
 </head>
 <body>
@@ -162,8 +167,13 @@
                     {% endif %}
                     {% for choice in question.choice_set.all %}
                     <label class="choice-label">
+                        {% if choice.id == choice_id %}
+                        <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice_id }}" checked>
+                        {{ choice.choice_text }}
+                        {% else %}
                         <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
                         {{ choice.choice_text }}
+                        {% endif %}
                     </label>
                     {% endfor %}
                 <button type="submit" class="vote-button">Vote</button>

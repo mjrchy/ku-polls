@@ -92,7 +92,7 @@
                 font-weight: bold;
                 font-size: 18px;
                 text-decoration: none;
-                margin: 0 5px 0;
+                margin: 20px auto;
                 max-width: 200px;
                 text-align: center;
             }
@@ -106,33 +106,6 @@
                 font-weight: bold;
                 font-size: 18px;
                 padding-right: 20px;
-            }
-
-            .result-link {
-                justify-content: center;
-                display: flex;
-            }
-
-            .container {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                padding: 20px;
-            }
-
-            .question-container {
-                background-color: white;
-                border: 1px solid #ddd;
-                border-radius: 15px;
-                padding: 20px;
-                max-width: 600px;
-                width: 100%;
-                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-            }
-
-            h2 {
-                color: black;
-                margin-top: 0;
             }
 
         </style>
@@ -151,10 +124,14 @@
                 <h1 class="header">KU Polls</h1>
             </div>
         </nav>
-        <div class="container">
-            <div class="question-container">
                 <table border="1">
                     <h2>{{ question.question_text }}</h2>
+                    
+                    {% if messages %}
+                    {% for message in messages %}
+                    <p class="msg">{{message}}</p>
+                    {%endfor%}
+                    {%endif%}
                     <thead>
                         <tr>
                             <th>Choice</th>
@@ -170,11 +147,6 @@
                         {% endfor %}
                     </tbody>
                 </table>
-            </div>
-        </div>
-        <div class="result-link">
-            <a href="{% url 'polls:detail' question.id%}" class="button">Back</a>
-            <a href="{% url 'polls:index' %}" class="button">Vote More</a>
-        </div>
+                <a href="{% url 'polls:index' %}" class="button">Back to List of Polls</a>
     </body>
 </html>
