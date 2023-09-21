@@ -1,4 +1,5 @@
 # KU Polls
+[![Python application](https://github.com/mjrchy/ku-polls/actions/workflows/python-app.yml/badge.svg)](https://github.com/mjrchy/ku-polls/actions/workflows/python-app.yml)
 
 This app helps create surveys with multiple-choice questions specifically for Kasetsart University. It's made by following the [Django Tutorial project](https://docs.djangoproject.com/en/3.1/intro/tutorial01/) and includes extra features. 
 
@@ -18,7 +19,6 @@ A polls application for [Individual Software Process](https://cpske.github.io/IS
    python -m venv venv
    ```
    On Windows:
-
    ```
    venv\Scripts\activate
    ```
@@ -30,7 +30,6 @@ A polls application for [Individual Software Process](https://cpske.github.io/IS
    ```
    pip install -r requirements.txt
    ```
-
 5. Create .env file and set values for externalized variables following sample.env in the repository.
 6. Set Up the Database.
    ```
@@ -45,7 +44,7 @@ A polls application for [Individual Software Process](https://cpske.github.io/IS
    ```
    python manage.py runserver
    ```
-
+   
 ## Project Documents
 
 All project-related documents are in the [Project Wiki](../../wiki/Home)
