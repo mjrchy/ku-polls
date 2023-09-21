@@ -34,13 +34,18 @@ class DetailView(generic.DetailView):
 
     def get(self, request, pk):
         """GET requests for the detail view of a question."""
-        selected_question = get_object_or_404(Question, pk=pk)
         try:
-            choice_id = Vote.objects.get(user=request.user, choice__question=selected_question).choice.id
+            selected_question = Question.objects.get(pk=pk)
+        except Question.DoesNotExist:
+            messages.error(request, f"Question {pk} does not exist.")
+            return HttpResponseRedirect(reverse('polls:index'))
+        try:
+            choice_id = Vote.objects.get(user=request.user,
+                                         choice__question=selected_question).choice.id
         except (Vote.DoesNotExist, TypeError):
             choice_id = None
         if not selected_question.can_vote():
-            messages.error(request, 'Voting is not allowed.')
+            messages.error(request, 'Voting is not allowed. Please select other questions to vote!')
             return HttpResponseRedirect(reverse('polls:index'))
         return render(request, 'polls/detail.html',
                       {'question': selected_question, 'choice_id': choice_id})
