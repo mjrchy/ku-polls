@@ -124,24 +124,29 @@
                 <h1 class="header">KU Polls</h1>
             </div>
         </nav>
-        <table border="1">
-            <h2>{{ question.question_text }}</h2>
-            <thead>
-                <tr>
-                    <th>Choice</th>
-                    <th>Votes</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for choice in question.choice_set.all %}
-                <tr>
-                    <td>{{ choice.choice_text }}</td>
-                    <td>{{ choice.votes }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-
-        <a href="{% url 'polls:index' %}" class="button">Back to List of Polls</a>
+                <table border="1">
+                    <h2>{{ question.question_text }}</h2>
+                    
+                    {% if messages %}
+                    {% for message in messages %}
+                    <p class="msg">{{message}}</p>
+                    {%endfor%}
+                    {%endif%}
+                    <thead>
+                        <tr>
+                            <th>Choice</th>
+                            <th>Votes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for choice in question.choice_set.all %}
+                        <tr>
+                            <td>{{ choice.choice_text }}</td>
+                            <td>{{ choice.votes }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <a href="{% url 'polls:index' %}" class="button">Back to List of Polls</a>
     </body>
 </html>

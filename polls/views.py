@@ -35,11 +35,16 @@ class DetailView(generic.DetailView):
     def get(self, request, pk):
         """GET requests for the detail view of a question."""
         selected_question = get_object_or_404(Question, pk=pk)
+        try:
+            choice_id = Vote.objects.get(user=request.user,
+                                         choice__question=selected_question).choice.id
+        except Vote.DoesNotExist:
+            choice_id = None
         if not selected_question.can_vote():
             messages.error(request, 'Voting is not allowed.')
             return HttpResponseRedirect(reverse('polls:index'))
-        return render(
-            request, 'polls/detail.html', {'question': selected_question})
+        return render(request, 'polls/detail.html',
+                      {'question': selected_question, 'choice_id': choice_id})
 
 
 class ResultsView(generic.DetailView):
@@ -69,6 +74,7 @@ def vote(request, question_id):
         # no matching vote - create new vote
         vote = Vote(user=this_user, choice=selected_choice)
     vote.save()
-    messages.success(request, "Your vote for " + question.question_text + "has been saved.")
+    messages.success(request, "Your vote for " + question.question_text
+                     + "has been saved.")
     return HttpResponseRedirect(
         reverse('polls:results', args=(question.id,)))
