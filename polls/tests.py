@@ -21,8 +21,7 @@ class QuestionModelTests(TestCase):
 
     def test_was_published_recently_with_old_question(self):
         """Returns False if question's pub_date is more than 1 day old."""
-        time = timezone.localtime(timezone.now())
-        - datetime.timedelta(days=1, seconds=1)
+        time = timezone.localtime(timezone.now()) - datetime.timedelta(days=1, seconds=1)
         old_question = Question(pub_date=time)
         self.assertIs(old_question.was_published_recently(), False)
 
@@ -60,16 +59,14 @@ class QuestionModelTests(TestCase):
     def test_can_vote_between_published_date_and_end_date(self):
         """can_vote returns True between published and end date."""
         time_pub_date = timezone.localtime(timezone.now())
-        time_end_date = timezone.localtime(timezone.now())
-        + datetime.timedelta(days=1)
+        time_end_date = timezone.localtime(timezone.now()) + datetime.timedelta(days=1)
         question_btw_pub_and_end_date = Question(pub_date=time_pub_date,
                                                  end_date=time_end_date)
         self.assertIs(question_btw_pub_and_end_date.can_vote(), True)
 
     def test_can_not_vote_before_published_date(self):
         """can_vote returns False for questions not yet published."""
-        time_pub_date = timezone.localtime(timezone.now())
-        + datetime.timedelta(days=1)
+        time_pub_date = timezone.localtime(timezone.now()) + datetime.timedelta(days=1)
         question_before_pub_date = Question(pub_date=time_pub_date)
         self.assertEqual(question_before_pub_date.can_vote(), False)
 
