@@ -4,7 +4,7 @@ This app helps create surveys with multiple-choice questions specifically for Ka
 
 A polls application for [Individual Software Process](https://cpske.github.io/ISP) course at [Kasetsart University](https://ku.ac.th).
 
-## How to Run## Installation
+## How to Run
 1. Cloning the repository.
    ```
    git clone https://github.com/mjrchy/ku-polls.git
@@ -20,11 +20,11 @@ A polls application for [Individual Software Process](https://cpske.github.io/IS
    On Windows:
 
    ```
-   myenv\Scripts\activate
+   venv\Scripts\activate
    ```
    On macOS and Linux:
    ```
-   source myenv/bin/activate
+   source venv/bin/activate
    ```
 4. Install dependencies.
    ```
@@ -45,7 +45,6 @@ A polls application for [Individual Software Process](https://cpske.github.io/IS
    ```
    python manage.py runserver
    ```
-
 
 ## Project Documents
 
