@@ -6,24 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KU Polls - {{ question.question_text }}</title>
     <style>
-        /* Reset default margin and padding */
         * {
             margin: 0;
             padding: 0;
         }
 
-        /* Style the body */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f4f4f4;
         }
 
-        /* Header Styles */
         .header {
-            color: black; /* Pastel Green Color */
+            color: black; 
             font-size: 40px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
             margin-right: 20px;
+            text-decoration: none;
+            font-weight: bold;
         }
 
         .navbar {
@@ -59,9 +58,9 @@
             font-weight: bold;
             font-size: 18px;
             padding-right: 20px;
+            text-decoration: none;
         }
 
-        /* Style the container */
         .container {
             display: flex;
             flex-direction: column;
@@ -69,7 +68,6 @@
             padding: 20px;
         }
 
-        /* Style the question container */
         .question-container {
             background-color: white;
             border: 1px solid #ddd;
@@ -77,17 +75,15 @@
             padding: 20px;
             max-width: 600px;
             width: 100%;
-            margin-bottom: 20px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
         }
 
         .question-header {
-            color: darkgreen;
+            color: black;
             font-size: 24px;
             margin-bottom: 10px;
         }
 
-        /* Style the question form */
         .question-form {
             display: block;
             text-align: center;
@@ -100,7 +96,6 @@
             margin-left: 5%;
         }
 
-        /* Style the vote button */
         .vote-button {
             background-color: #ACDF87;
             color: darkgreen;
@@ -108,7 +103,7 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 18px;
             margin-top: 10px;
             font-weight: bold;
         }
@@ -117,8 +112,8 @@
             background-color: #67a365;
         }
 
-        /* Style the result link */
         .result-link {
+            margin: 10px;
             text-align: center;
         }
 
@@ -132,6 +127,8 @@
             font-weight: bold;
             font-size: 18px;
             text-decoration: none;
+            margin: 5px 5px 0;
+            padding: 10px 20px;
         }
 
         .button:hover {
@@ -142,20 +139,25 @@
             text-align: left;
             padding: 1%;
         }
+
+        .error {
+            color: rgb(232, 82, 82);
+            margin-top: 2%;
+        }
     </style>
 </head>
 <body>
     <nav class="navbar">
         <div class="nav-left">
             {% if user.is_authenticated %}
-            <p class="user-greeting">{{user.username.title}}</p>
+            <a href="{% url 'polls:index'%}" class="user-greeting">{{user.username.title}}</a>
             {%else%}
             <a href="{% url 'login' %}" class="nav-link">Log in</a>
             {%endif%}
             <a href="{% url 'logout' %}" class="nav-link">Log out</a>
         </div>
         <div class="nav-right">
-            <h1 class="header">KU Polls</h1>
+            <a href="{% url 'polls:index'%}" class="header">KU Polls</a>
         </div>
     </nav>
     <main class="container">
@@ -168,17 +170,22 @@
                     {% endif %}
                     {% for choice in question.choice_set.all %}
                     <label class="choice-label">
+                        {% if choice.id == choice_id %}
+                        <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice_id }}" checked>
+                        {{ choice.choice_text }}
+                        {% else %}
                         <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
                         {{ choice.choice_text }}
+                        {% endif %}
                     </label>
                     {% endfor %}
                 <button type="submit" class="vote-button">Vote</button>
             </form>
         </div>
-        <div class="result-link">
-            <a href="{% url 'polls:index' %}" class="button">Back</a>
-            <a href="{% url 'polls:results' question.id %}" class="button">See Results</a>
-        </div>
     </main>
+    <div class="result-link">
+        <a href="{% url 'polls:index' %}" class="button">Back</a>
+        <a href="{% url 'polls:results' question.id %}" class="button">See Results</a>
+    </div>
 </body>
 </html>

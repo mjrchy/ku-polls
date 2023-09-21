@@ -31,15 +31,24 @@ class DetailView(generic.DetailView):
         """Excludes any questions that aren't published yet."""
         return Question.objects.filter(
             pub_date__lte=timezone.now(), end_date__gte=timezone.now())
-    
+
     def get(self, request, pk):
         """GET requests for the detail view of a question."""
-        selected_question = get_object_or_404(Question, pk=pk)
-        if not selected_question.can_vote():
-            messages.error(request, 'Voting is not allowed.')
+        try:
+            selected_question = Question.objects.get(pk=pk)
+        except Question.DoesNotExist:
+            messages.error(request, f"Question {pk} does not exist.")
             return HttpResponseRedirect(reverse('polls:index'))
-        return render(
-            request, 'polls/detail.html', {'question': selected_question})
+        try:
+            choice_id = Vote.objects.get(user=request.user,
+                                         choice__question=selected_question).choice.id
+        except (Vote.DoesNotExist, TypeError):
+            choice_id = None
+        if not selected_question.can_vote():
+            messages.error(request, 'Voting is not allowed. Please select other questions to vote!')
+            return HttpResponseRedirect(reverse('polls:index'))
+        return render(request, 'polls/detail.html',
+                      {'question': selected_question, 'choice_id': choice_id})
 
 
 class ResultsView(generic.DetailView):
@@ -69,6 +78,7 @@ def vote(request, question_id):
         # no matching vote - create new vote
         vote = Vote(user=this_user, choice=selected_choice)
     vote.save()
-    messages.success(request, "Your vote for " + question.question_text + "has been saved.")
-    return HttpResponseRedirect(
-        reverse('polls:results', args=(question.id,)))
+    messages.success(request, "Your vote for " + question.question_text
+                     + " has been saved.")
+
+    return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))

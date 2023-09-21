@@ -1,3 +1,4 @@
+"""This module is for setting the admin interface."""
 from django.contrib import admin
 
 from .models import Question, Choice
