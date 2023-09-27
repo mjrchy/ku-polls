@@ -15,10 +15,10 @@ class IndexView(generic.ListView):
     context_object_name = 'latest_question_list'
 
     def get_queryset(self):
-        """Return all published questions which can be voted."""
+        """Return all published questions."""
         question_list = [
             question for question in Question.objects.all()
-            if question.is_published() and question.can_vote()]
+            if question.is_published() ]
         return sorted(question_list, key=lambda x: x.pub_date, reverse=True)
 
 
@@ -45,7 +45,7 @@ class DetailView(generic.DetailView):
         except (Vote.DoesNotExist, TypeError):
             choice_id = None
         if not selected_question.can_vote():
-            messages.error(request, 'Voting is not allowed. Please select other questions to vote!')
+            messages.error(request, "This poll has ended. Please choose another poll to vote.")
             return HttpResponseRedirect(reverse('polls:index'))
         return render(request, 'polls/detail.html',
                       {'question': selected_question, 'choice_id': choice_id})

@@ -64,3 +64,8 @@ All project-related documents are in the [Project Wiki](../../wiki/Home)
 |-----------|-----------------|
 |   user1   | 123456 |
 |   user2   | 123456 |
+
+## Demo Admin
+| Username  | Password        |
+|-----------|-----------------|
+|   admin   | admin.ku |
